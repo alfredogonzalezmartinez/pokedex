@@ -22,7 +22,7 @@ export const getAllPokemon = async (options = { offset: 0, limit: Number.MAX_SAF
     const pokemonList = await Promise.all(
       pokemonRequest.results.map(pokemon => getPokemon(pokemon.name))
     )
-    return pokemonList
+    return pokemonList.filter(({ is_default }) => is_default)
   } catch (error) {
     return []
   }
