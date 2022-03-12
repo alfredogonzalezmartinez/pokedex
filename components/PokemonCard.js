@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import defaultImage from '../public/default.png'
 
 const BACKGROUND = {
   bug: 'bg-bug',
@@ -22,11 +23,15 @@ const BACKGROUND = {
 }
 
 const PokemonCard = ({ pokemon }) => {
+  if (!pokemon) return null
+  const imageSrc = pokemon?.sprites?.other?.home?.front_default
+    ? pokemon.sprites.other.home.front_default
+    : defaultImage
   return (
     <article className='capitalize p-4 border-solid border  border-gray-300  rounded-lg bg-white'>
       <div className='flex justify-center bg-gray-100 rounded-lg p-4 drop-shadow-md'>
         <Image
-          src={pokemon.sprites.other.home.front_default}
+          src={imageSrc}
           alt={`${pokemon.name} sprite`}
           width={200}
           height={200}
