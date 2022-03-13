@@ -5,8 +5,8 @@ export const getPokemon = async (id) => {
   const url = `${BASE}/pokemon/${id}`
   try {
     const pokemon = await (await fetch(url)).json()
-    if (pokemon.name === 'nidoran-f') pokemon.name = 'Nidoran♀'
-    if (pokemon.name === 'nidoran-m') pokemon.name = 'Nidoran♂'
+    if (pokemon.name === 'nidoran-f') pokemon.species.name = 'Nidoran♀'
+    if (pokemon.name === 'nidoran-m') pokemon.species.name = 'Nidoran♂'
     return pokemon
   } catch (error) {
     return null
@@ -14,15 +14,22 @@ export const getPokemon = async (id) => {
 }
 
 export const getAllPokemon = async (options = { offset: 0, limit: Number.MAX_SAFE_INTEGER }) => {
-  const offset = options?.offset
-  const limit = options?.limit
-  const url = `${BASE}/pokemon?offset=${offset}&limit=${limit}`
+  const offset = options?.offset && typeof options.offset === 'number' && options.offset > 0
+    ? options.offset - 1
+    : 0
+  const limit = options?.limit && typeof options.limit === 'number' && options.limit > 0
+    ? offset + options.limit
+    : Number.MAX_SAFE_INTEGER
+  const url = `${BASE}/pokedex/1/`
   try {
-    const pokemonRequest = await (await fetch(url)).json()
+    const nationalPokedex = await (await fetch(url)).json()
     const pokemonList = await Promise.all(
-      pokemonRequest.results.map(pokemon => getPokemon(pokemon.name))
+      nationalPokedex
+        .pokemon_entries
+        .slice(offset, limit)
+        .map(({ entry_number: id }) => getPokemon(id))
     )
-    return pokemonList.filter(({ is_default }) => is_default)
+    return pokemonList
   } catch (error) {
     return []
   }
