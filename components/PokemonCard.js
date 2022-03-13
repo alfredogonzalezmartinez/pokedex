@@ -38,7 +38,7 @@ const PokemonCard = ({ pokemon }) => {
         />
       </div>
       <h2 className='text-4xl flex justify-between my-2'>
-        {pokemon.name}
+        {pokemon.species.name}
         <span className='text-2xl text-gray-400'>#{pokemon.id}</span>
       </h2>
       <p className='flex justify-start gap-2'>
