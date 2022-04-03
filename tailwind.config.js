@@ -21,6 +21,7 @@ module.exports = {
         normal: '#A8A878',
         poison: '#A040A0',
         psychic: '#F85888',
+        redPokedex: '#F2512F',
         rock: '#B8A038',
         steel: '#B8B8D0',
         water: '#6890F0',
