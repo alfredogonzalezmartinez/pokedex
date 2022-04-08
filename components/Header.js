@@ -7,7 +7,7 @@ import logo from '../public/pokeball.svg'
 
 const Header = () => {
   return (
-    <header className='p-3 bg-redPokedex text-white'>
+    <header className='py-2 px-5 bg-redPokedex text-white min-w-min'>
       <div className='flex flex-col justify-center sm:flex-row sm:justify-between max-w-screen-2xl mx-auto'>
         <Link href="/">
           <a className='flex justify-center items-center gap-2 p-2'>
