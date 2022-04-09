@@ -72,7 +72,10 @@ const getPokemonHomeSprites = (
   const genderRate = pokemon.genderRate >= -1 && pokemon.genderRate <= 8
     ? pokemon.genderRate.toString()
     : '4'
-  const hasGenderDifferences = !!pokemon?.hasGenderDifferences
+
+  const hasGenderDifferences = !(formName === 'alolan form')
+    ? !!pokemon?.hasGenderDifferences
+    : false
 
   const isGigantamax = !!pokemon?.isGigantamax
 
