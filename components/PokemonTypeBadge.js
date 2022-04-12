@@ -16,13 +16,20 @@ const BACKGROUND = {
   psychic: 'bg-psychic',
   rock: 'bg-rock',
   steel: 'bg-steel',
+  unknown: 'bg-unknown',
   water: 'bg-water',
 }
 
-const PokemonTypeBadge = ({ type }) => (
-  <span className={`text-white text-sm capitalize ${BACKGROUND[type]} rounded-md py-0.5 px-5 `}>
-    {type}
-  </span>
-)
+const PokemonTypeBadge = ({ type }) => {
+  if (!BACKGROUND[type]) type = 'unknown'
+  return (
+    <span className={`text-white text-sm capitalize ${BACKGROUND[type]} rounded-md py-0.5 px-5 `}>
+      {type === 'unknown'
+        ? '???'
+        : type
+      }
+    </span>
+  )
+}
 
 export default PokemonTypeBadge

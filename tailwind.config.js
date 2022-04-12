@@ -24,6 +24,7 @@ module.exports = {
         redPokedex: '#F2512F',
         rock: '#B8A038',
         steel: '#B8B8D0',
+        unknown: '#68A090',
         water: '#6890F0',
       },
     },
