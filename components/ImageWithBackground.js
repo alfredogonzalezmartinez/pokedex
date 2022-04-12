@@ -7,8 +7,8 @@ const ImageWithBackground = ({ alt, src, height = 200, width = 200 }) => {
       <Image
         src={src}
         alt={alt}
-        width={height}
-        height={width}
+        height={height}
+        width={width}
       />
     </div>
   )
