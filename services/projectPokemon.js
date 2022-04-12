@@ -1,6 +1,6 @@
 const HOME_SPRITE_BASE = 'https://projectpokemon.org/images/sprites-models/homeimg/poke_capture'
 
-const SUBTITUTE_SPRITE = 'https://projectpokemon.org/home/uploads/monthly_2021_02/large.27374.png.fc08587dc50c952e213994f292457ae2.png'
+export const SUBTITUTE_SPRITE = 'https://projectpokemon.org/home/uploads/monthly_2021_02/large.27374.png.fc08587dc50c952e213994f292457ae2.png'
 
 const DEFAULT_SPRITES = {
   default: SUBTITUTE_SPRITE,
