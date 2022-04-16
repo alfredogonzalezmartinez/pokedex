@@ -1,12 +1,12 @@
 const HOME_SPRITE_BASE = 'https://projectpokemon.org/images/sprites-models/homeimg/poke_capture'
 
-export const SUBTITUTE_SPRITE = 'https://projectpokemon.org/home/uploads/monthly_2021_02/large.27374.png.fc08587dc50c952e213994f292457ae2.png'
+const SUBSTITUTE_SPRITE = 'https://projectpokemon.org/home/uploads/monthly_2021_02/large.27374.png.fc08587dc50c952e213994f292457ae2.png'
 
 const DEFAULT_SPRITES = {
-  default: SUBTITUTE_SPRITE,
-  defaultShiny: SUBTITUTE_SPRITE,
-  female: SUBTITUTE_SPRITE,
-  femaleShiny: SUBTITUTE_SPRITE,
+  default: SUBSTITUTE_SPRITE,
+  defaultShiny: SUBSTITUTE_SPRITE,
+  female: SUBSTITUTE_SPRITE,
+  femaleShiny: SUBSTITUTE_SPRITE,
 }
 
 const getPokemonHomeSpriteUrl = (
@@ -18,7 +18,7 @@ const getPokemonHomeSpriteUrl = (
     number: 0,
   }
 ) => {
-  if (!pokemon?.number || pokemon.number < 1) return SUBTITUTE_SPRITE
+  if (!pokemon?.number || pokemon.number < 1) return SUBSTITUTE_SPRITE
 
   const number = pokemon.number.toString().padStart(4, '0')
 
