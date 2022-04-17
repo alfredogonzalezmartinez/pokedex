@@ -1,6 +1,8 @@
 const BASE = 'https://pokeapi.co/api/v2'
 
-const get = async (endpoint = '', options = { id: null, offset: 0, limit: Number.MAX_SAFE_INTEGER }) => {
+const MAX_NUMBER_OF_REQUESTS = 5
+
+const get = async (endpoint = '', options = { id: null, offset: 0, limit: Number.MAX_SAFE_INTEGER }, counter = 1) => {
   if (typeof endpoint !== 'string') return null
   let url = `${BASE}/${endpoint}`
 
@@ -22,8 +24,8 @@ const get = async (endpoint = '', options = { id: null, offset: 0, limit: Number
     const data = await (await fetch(url)).json()
     return data
   } catch (error) {
-    console.error(error)
-    return null
+    if (counter > MAX_NUMBER_OF_REQUESTS) return console.error(error)
+    return await get(endpoint, options, counter + 1)
   }
 }
 
