@@ -21,8 +21,9 @@
         "objects": "always-multiline",
         "imports": "always-multiline",
         "exports": "always-multiline",
-        "functions": "never"
+        "functions": "only-multiline"
       }
-    ]
+    ],
+    "node/no-callback-literal": 0
   }
 }
