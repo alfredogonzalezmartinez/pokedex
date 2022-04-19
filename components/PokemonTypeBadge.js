@@ -1,3 +1,5 @@
+import { capitalize } from '../services/utils/capitalize'
+
 const BACKGROUND = {
   bug: 'bg-bug',
   dark: 'bg-dark',
@@ -23,10 +25,10 @@ const BACKGROUND = {
 const PokemonTypeBadge = ({ type }) => {
   if (!BACKGROUND[type]) type = 'unknown'
   return (
-    <span className={`text-white text-sm capitalize ${BACKGROUND[type]} rounded-md py-0.5 px-5 `}>
+    <span className={`text-white ${BACKGROUND[type]} rounded-md py-0.5 px-5 `}>
       {type === 'unknown'
         ? '???'
-        : type
+        : capitalize(type)
       }
     </span>
   )
