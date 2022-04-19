@@ -9,6 +9,29 @@ const DEFAULT_SPRITES = {
   femaleShiny: SUBSTITUTE_SPRITE,
 }
 
+const GENDER = {
+  both: 'mf',
+  female: 'fd',
+  femaleOnly: 'fo',
+  genderless: 'uk',
+  male: 'md',
+  maleOnly: 'mo',
+}
+
+const GENDER_BY_FORM = {
+  'alolan form': 'both',
+  'ash-greninja': 'maleOnly',
+  female: 'femaleOnly',
+  male: 'maleOnly',
+}
+
+const getGender = (genderRate) => {
+  if (genderRate === '-1') return 'genderless'
+  if (genderRate === '0') return 'maleOnly'
+  if (genderRate === '8') return 'femaleOnly'
+  return 'both'
+}
+
 const getPokemonHomeSpriteUrl = (
   pokemon = {
     formOrder: 0,
@@ -25,15 +48,6 @@ const getPokemonHomeSpriteUrl = (
   const formOrder = pokemon?.formOrder && pokemon.formOrder > 0
     ? (pokemon.formOrder).toString().padStart(3, '0')
     : '000'
-
-  const GENDER = {
-    both: 'mf',
-    female: 'fd',
-    femaleOnly: 'fo',
-    genderless: 'uk',
-    male: 'md',
-    maleOnly: 'mo',
-  }
 
   const gender = pokemon?.gender && Object.keys(GENDER).includes(pokemon.gender)
     ? GENDER[pokemon.gender]
@@ -73,9 +87,7 @@ const getPokemonHomeSprites = (
     ? pokemon.genderRate.toString()
     : '4'
 
-  const hasGenderDifferences = !(formName === 'alolan form')
-    ? !!pokemon?.hasGenderDifferences
-    : false
+  const hasGenderDifferences = !!pokemon?.hasGenderDifferences
 
   const isGigantamax = !!pokemon?.isGigantamax
 
@@ -92,29 +104,8 @@ const getPokemonHomeSprites = (
 
   const sprites = { }
 
-  if (formName === 'female' || formName === 'male') {
-    const GENDER_BY_FORM = {
-      female: 'femaleOnly',
-      male: 'maleOnly',
-    }
-
-    pokemonData.gender = GENDER_BY_FORM[formName]
-
-    sprites.default = getPokemonHomeSpriteUrl({ ...pokemonData })
-    sprites.defaultShiny = getPokemonHomeSpriteUrl({ ...pokemonData, isShiny: true })
-
-    return sprites
-  }
-
-  if (!hasGenderDifferences || isGigantamax || isMega) {
-    const getGender = (genderRate) => {
-      if (genderRate === '-1') return 'genderless'
-      if (genderRate === '0') return 'maleOnly'
-      if (genderRate === '8') return 'femaleOnly'
-      return 'both'
-    }
-
-    pokemonData.gender = getGender(genderRate)
+  if (GENDER_BY_FORM[formName] || !hasGenderDifferences || isGigantamax || isMega) {
+    pokemonData.gender = GENDER_BY_FORM[formName] ?? getGender(genderRate)
 
     sprites.default = getPokemonHomeSpriteUrl({ ...pokemonData })
     sprites.defaultShiny = getPokemonHomeSpriteUrl({ ...pokemonData, isShiny: true })
