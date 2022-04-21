@@ -37,7 +37,51 @@ export const filterVarieties = (varietiesList, speciesName) => {
 }
 
 const FORMS_TO_FILTER = {
-  arceus: ['arceus-unknown'],
+  arceus: [
+    'arceus-unknown',
+  ],
+  scatterbug: [
+    'scatterbug-icy-snow',
+    'scatterbug-polar',
+    'scatterbug-tundra',
+    'scatterbug-continental',
+    'scatterbug-garden',
+    'scatterbug-elegant',
+    'scatterbug-modern',
+    'scatterbug-marine',
+    'scatterbug-archipelago',
+    'scatterbug-high-plains',
+    'scatterbug-sandstorm',
+    'scatterbug-river',
+    'scatterbug-monsoon',
+    'scatterbug-savanna',
+    'scatterbug-sun',
+    'scatterbug-ocean',
+    'scatterbug-jungle',
+    'scatterbug-fancy',
+    'scatterbug-poke-ball',
+  ],
+  spewpa: [
+    'spewpa-icy-snow',
+    'spewpa-polar',
+    'spewpa-tundra',
+    'spewpa-continental',
+    'spewpa-garden',
+    'spewpa-elegant',
+    'spewpa-modern',
+    'spewpa-marine',
+    'spewpa-archipelago',
+    'spewpa-high-plains',
+    'spewpa-sandstorm',
+    'spewpa-river',
+    'spewpa-monsoon',
+    'spewpa-savanna',
+    'spewpa-sun',
+    'spewpa-ocean',
+    'spewpa-jungle',
+    'spewpa-fancy',
+    'spewpa-poke-ball',
+  ],
 }
 
 const filterFormsByVariety = (formsList, varietyName) => FORMS_TO_FILTER[varietyName]
