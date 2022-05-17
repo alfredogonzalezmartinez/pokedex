@@ -1,7 +1,12 @@
 import pokeApi from '../pokeApi'
 
-export const getPokemonSpeciesList = async () => {
-  const { results } = await pokeApi.getPokemonSpeciesList({ offset: 0, limit: 898 })
+const DEFAULT_OPTIONS = {
+  offset: 0,
+  limit: 898,
+}
+
+export const getPokemonSpeciesList = async (options = DEFAULT_OPTIONS) => {
+  const { results } = await pokeApi.getPokemonSpeciesList(options)
 
   const pokemonSpeciesList = results.map(({ name }) => name)
 
