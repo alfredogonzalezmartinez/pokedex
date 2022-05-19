@@ -1,17 +1,17 @@
+import { ROOT_URL } from '../config'
 import pokedex from '../services/pokedex'
 
 const DEFAULT_LIMIT = 20
 const DEFAULT_OFFSET = 0
 const MIN_OFFSET = 0
 
-const ROOT_URL = process.env.ROOT_URL || 'http://localhost:3000'
 const POKEMON_CARDS_API_URL = `${ROOT_URL}/api/pokemon-cards`
 
 let allPokemonList = null
 
 export const getPokemonCards = async (options = { offset: DEFAULT_OFFSET, limit: DEFAULT_LIMIT }) => {
-  const offsetAsNumber = (Number(options?.offset))
-  const limitAsNumber = (Number(options?.limit))
+  const offsetAsNumber = Number(options?.offset)
+  const limitAsNumber = Number(options?.limit)
 
   const offset = !Number.isNaN(offsetAsNumber)
     ? offsetAsNumber
