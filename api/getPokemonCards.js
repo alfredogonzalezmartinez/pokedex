@@ -1,27 +1,30 @@
-import { ROOT_URL } from '../config'
 import pokedex from '../services/pokedex'
 
 const DEFAULT_LIMIT = 20
 const DEFAULT_OFFSET = 0
 const MIN_OFFSET = 0
 
-const POKEMON_CARDS_API_URL = `${ROOT_URL}/api/pokemon-cards`
+const POKEMON_CARDS_API_ENDPOINT = '/api/pokemon-cards'
 
 let allPokemonList = null
 
-export const getPokemonCards = async (options = { offset: DEFAULT_OFFSET, limit: DEFAULT_LIMIT }) => {
-  const offsetAsNumber = Number(options?.offset)
-  const limitAsNumber = Number(options?.limit)
-
-  const offset = !Number.isNaN(offsetAsNumber)
-    ? offsetAsNumber
-    : DEFAULT_OFFSET
-
-  const limit = !Number.isNaN(limitAsNumber)
-    ? limitAsNumber
-    : DEFAULT_LIMIT
-
+export const getPokemonCards = async (options = { offset: DEFAULT_OFFSET, limit: DEFAULT_LIMIT, url: POKEMON_CARDS_API_ENDPOINT }) => {
   if (!allPokemonList) allPokemonList = await pokedex.getPokemonSpeciesList()
+
+  const offsetAsNumber = Number(options.offset)
+  const limitAsNumber = Number(options.limit)
+
+  const offset = Number.isNaN(offsetAsNumber)
+    ? DEFAULT_OFFSET
+    : offsetAsNumber
+
+  const limit = Number.isNaN(limitAsNumber) || limitAsNumber <= 0
+    ? DEFAULT_LIMIT
+    : limitAsNumber
+
+  const url = options.url
+    ? `${options.url}${POKEMON_CARDS_API_ENDPOINT}`
+    : POKEMON_CARDS_API_ENDPOINT
 
   const nextOffset = offset + limit
 
@@ -40,11 +43,11 @@ export const getPokemonCards = async (options = { offset: DEFAULT_OFFSET, limit:
     : MIN_OFFSET
 
   const next = nextOffset <= count
-    ? `${POKEMON_CARDS_API_URL}?offset=${nextOffset}&limit=${limit}`
+    ? `${url}?offset=${nextOffset}&limit=${limit}`
     : null
 
   const previous = offset + limit > limit
-    ? `${POKEMON_CARDS_API_URL}?offset=${previousOffset}&limit=${previousLimit}`
+    ? `${url}?offset=${previousOffset}&limit=${previousLimit}`
     : null
 
   return {
