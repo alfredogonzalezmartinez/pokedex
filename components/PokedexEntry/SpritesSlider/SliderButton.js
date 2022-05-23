@@ -16,7 +16,7 @@ const SliderButton = ({ prev = false, clickhandler = () => {} }) => {
       onClick={clickhandler}
       title={title}
     >
-      <Arrow type={type} color='white'/>
+      <Arrow type={type} color='white' />
     </button>
   )
 }

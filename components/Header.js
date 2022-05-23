@@ -11,11 +11,11 @@ const Header = () => {
       <div className='flex flex-col justify-center sm:flex-row sm:justify-between max-w-screen-2xl mx-auto'>
         <Link href="/">
           <a className='flex justify-center items-center gap-2 p-2'>
-            <Image src={logo} alt='logo' height={40} width={40}/>
+            <Image src={logo} alt='logo' height={40} width={40} />
             <h1 className='text-5xl font-bold'>Pokédex</h1>
           </a>
         </Link>
-        <Searcher/>
+        <Searcher />
       </div>
     </header>
   )

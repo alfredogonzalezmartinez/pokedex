@@ -11,7 +11,7 @@ const EntryHeader = ({ entryNumber, genus, handleVariety, speciesName, varieties
     <p className='text-center text-2xl font-semibold text-gray-500'>{genus}</p>
     {varietiesList.length > 1 &&
       <section className='py-2'>
-        <VarietySelector varietiesList={varietiesList} handleVariety={handleVariety}/>
+        <VarietySelector varietiesList={varietiesList} handleVariety={handleVariety} />
       </section>
     }
   </header>

@@ -20,7 +20,7 @@ const PokemonCard = ({ name = 'substitute', number = 0, sprite = substitute, typ
         <span className='text-2xl text-gray-400'>#{number}</span>
       </h2>
       <p className='flex justify-start gap-2'>
-        {types.map((type) => <PokemonTypeBadge key={type} type={type}/>)}
+        {types.map((type) => <PokemonTypeBadge key={type} type={type} />)}
       </p>
     </article>
   )

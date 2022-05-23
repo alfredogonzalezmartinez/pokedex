@@ -30,7 +30,7 @@ const NavButton = ({ href = DEFAULT_HREF, tag = DEFAULT_TAG, type = DEFAULT_TYPE
     <Link href={href}>
       <a title={title} className={`${buttonStyles} transform ease-in sm:duration-500 text-lg hover:text-xl sm:hover:text-lg text-center text-white font-semibold bg-redPokedex w-full py-2 rounded-md inline-block relative my-1 group`}>
         <span className={`${arrowStyles} absolute top-1/2 -translate-y-1/2 sm:group-hover:translate-x-0`}>
-          <Arrow type={arrowType} size="4" color='white'/>
+          <Arrow type={arrowType} size="4" color='white' />
         </span>
         {capitalize(tag)}
       </a>

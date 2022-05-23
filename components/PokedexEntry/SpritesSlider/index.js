@@ -35,14 +35,14 @@ const SpritesSlider = ({ sprites = { default: SUBSTITUTE_SPRITE }, pokemonFormNa
       />
       {
         spritesList.length > 1 &&
-        <>
-          <SliderButton prev clickhandler={handlePreviousSprite} />
-          <SliderButton clickhandler={handleNextSprite} />
-        </>
+          <>
+            <SliderButton prev clickhandler={handlePreviousSprite} />
+            <SliderButton clickhandler={handleNextSprite} />
+          </>
       }
       {
         spritesList.length > 2 &&
-        <SliderGenderIndicator gender={form.includes('female') ? 'female' : 'male'}/>
+          <SliderGenderIndicator gender={form.includes('female') ? 'female' : 'male'} />
       }
     </section>
   )

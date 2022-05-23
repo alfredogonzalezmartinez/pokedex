@@ -19,7 +19,7 @@ const BaseStatsSection = ({ stats = DEFAULT_STATS }) => {
 
   return (
     <section>
-      <SectionTitle title='Base stats'/>
+      <SectionTitle title='Base stats' />
       <table>
         <tbody>
           <StatRow stat='hp' value={hp} />

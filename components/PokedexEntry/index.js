@@ -76,7 +76,7 @@ const PokedexEntry = ({ pokemon = SUBSTITUTE, next, prev }) => {
 
   return (
     <>
-      <EntriesNav next={next} prev={prev}/>
+      <EntriesNav next={next} prev={prev} />
       <article className='grid place-content-center bg-white rounded-md py-5 px-8 w-min mx-auto'>
         <EntryHeader
           entryNumber={entryNumber}
@@ -87,17 +87,17 @@ const PokedexEntry = ({ pokemon = SUBSTITUTE, next, prev }) => {
         />
         <div className='py-2 sm:flex sm:justify-center sm:gap-8'>
           <Colum>
-            <SpritesSlider key={mainForm.name} pokemonFormName={mainForm.name} sprites={sprites}/>
-            <GenderSection femalePercentage={femalePercentage}/>
-            <HeightWeightSection height={height} weight={weight}/>
+            <SpritesSlider key={mainForm.name} pokemonFormName={mainForm.name} sprites={sprites} />
+            <GenderSection femalePercentage={femalePercentage} />
+            <HeightWeightSection height={height} weight={weight} />
           </Colum>
           <Colum>
-            <TypesSection types={types}/>
-            <BaseStatsSection stats={stats}/>
-            <AbilitiesSection abilities={abilities}/>
+            <TypesSection types={types} />
+            <BaseStatsSection stats={stats} />
+            <AbilitiesSection abilities={abilities} />
           </Colum>
         </div>
-        {forms.length > 1 && <FormsSection forms={forms}/>}
+        {forms.length > 1 && <FormsSection forms={forms} />}
       </article>
     </>
   )

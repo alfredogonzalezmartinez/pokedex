@@ -21,7 +21,7 @@ const StatRow = ({ stat, value }) => {
       </th>
       <td className='w-44 flex items-center'>
         <span className='w-10 text-right inline-block pr-1'>{value}</span>
-        <StatBar value={value}/>
+        <StatBar value={value} />
       </td>
     </tr>
   )
