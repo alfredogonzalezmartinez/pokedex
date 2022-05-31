@@ -1,7 +1,7 @@
 import pokeApi from '../pokeApi'
 import { getPokemonForm } from './getPokemonForm'
 import { filterForms } from './helpers/filters'
-import { formatAbilities, formatPokemonName, formatStats } from './helpers/formatters'
+import { formatAbilities, formatStats } from './helpers/formatters'
 
 export const getPokemonSpeciesVariety = async (name) => {
   const {
@@ -24,7 +24,7 @@ export const getPokemonSpeciesVariety = async (name) => {
     height,
     id,
     isDefault,
-    name: formatPokemonName(name),
+    name,
     stats: formatStats(stats),
     weight,
   }

@@ -1,6 +1,6 @@
 import pokeApi from '../pokeApi'
 
-import { formatPokemonName, formatTypes, getEnglishName } from './helpers/formatters'
+import { formatTypes, getEnglishName } from './helpers/formatters'
 
 export const getPokemonForm = async (name) => {
   const {
@@ -19,7 +19,7 @@ export const getPokemonForm = async (name) => {
     isBattleOnly,
     isDefault,
     isMega,
-    name: formatPokemonName(getEnglishName(names, name)),
+    name: getEnglishName(names, name),
     types: formatTypes(types),
   }
 
