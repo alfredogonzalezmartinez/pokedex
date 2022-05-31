@@ -1,4 +1,3 @@
-
 export const formatAbilities = (abilities) => abilities.map(
   ({ ability, is_hidden: isHidden }) => ({ ability: ability.name, isHidden })
 )
@@ -10,6 +9,8 @@ export const formatKebabCaseToCamelcase = (kebabCase) => {
 }
 
 export const formatPokemonName = (name = '') => {
+  if (typeof name !== 'string') return name
+
   const POKEMON_NAMES = {
     flabebe: 'flabébé',
     'nidoran-f': 'nidoran♀',
